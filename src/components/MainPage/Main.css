@@ -1,0 +1,399 @@
+/* Main Layout */
+.Main {
+    background-color: black;
+    min-height: 420vh; /* Increased to allow enough space for scroll reveals */
+    position: relative;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Sections Positioning */
+.InfoContainer {
+    position: absolute;
+    left: 10%;
+    top: 15vh;
+    width: 50%;
+    padding-bottom: 20px;
+}
+/* Update these in your Main.css */
+
+.SkillsContainer, .ProjectsContainer, .CertificatesContainer {
+    position: absolute;
+    left: 10%;
+    width: 60%;
+    /* Add this line to ensure the observer can "see" the section longer */
+    min-height: 80vh; 
+}
+
+.SkillsContainer {
+    top: 110vh;
+}
+
+.ProjectsContainer {
+    top: 210vh; /* Slightly adjusted for better flow */
+}
+
+.CertificatesContainer {
+    top: 290vh;
+}
+
+/* Base Reveal Logic (Fixes the blank screen issue) */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    pointer-events: none;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Typography */
+.NameText {
+    font-size: 3.5rem;
+    color: white;
+    font-family: helvetica-w01-light, helvetica-w02-light, sans-serif;
+    margin-bottom: 20px;
+}
+
+/* Individual Letters Animation */
+.NameText span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: letterFade 0.6s ease forwards;
+    cursor: pointer;
+}
+
+.NameText span:hover {
+    transform: scale(1.1);
+    color: #00f0ff;
+}
+
+@keyframes letterFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.Info {
+    color: white;
+    font-size: 1.8rem;
+    line-height: 1.4;
+}
+
+/* Floating Section Label Styles */
+.Section {
+    color: cyan;
+    font-size: 2rem;
+    justify-self: center;
+    position: relative;
+    top: 140px;
+    background-color: rgb(24, 24, 24);
+    border-radius: 5px;
+    border: #00f0ff 3px solid;
+    width: 300px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transform: scale(1.3);
+    animation: sectionSlide 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+@keyframes sectionSlide {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(50px);
+        filter: blur(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.3) translateY(0);
+        filter: blur(0px);
+    }
+}
+
+/* Glow Line and Effects */
+.glow-line {
+    width: 20%;
+    height: 4px;
+    background: linear-gradient(90deg, #00f0ff, #0004fc);
+    border-radius: 2px;
+    position: fixed;
+    top: 25%;
+    left: 70%;
+    box-shadow: 0 0 30px #00f0ff;
+    animation: pulse 3s infinite alternate;
+    z-index: 10;
+}
+
+.glow-line::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    height: 450px;
+    background: linear-gradient(to bottom, rgba(0, 240, 255, 0.4), transparent);
+    transform-origin: top;
+    transform: perspective(800px) rotateX(55deg);
+    filter: blur(40px);
+}
+
+@keyframes pulse {
+    from { box-shadow: 0 0 30px #00f0ff, 0 0 80px #00ff88; }
+    to { box-shadow: 0 0 20px #00f0ff, 0 0 60px #00ff88; }
+}
+
+/* Link Buttons */
+.link-button {
+    background-color: transparent;
+    border: 1px solid rgba(0, 240, 255, 0.5);
+    color: #00f0ff;
+    padding: 8px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-top: 15px;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.link-button:hover {
+    background-color: rgba(0, 240, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+    border-color: #00f0ff;
+    transform: scale(1.1);
+}
+
+/* Utility */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Page Changer Container */
+.PageChanger {
+    position: absolute;
+    top: 420vh;
+    left: 11%;
+    z-index: 100;
+    display: flex; /* Lays the two parts side-by-side */
+    border: 1px solid #00f0ff; /* The shared outer border */
+    border-radius: 10px;
+    overflow: hidden; /* Ensures the sharp inner colors don't bleed over the rounded corners */
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+    transition: all 0.3s ease-in-out;
+    transform: scale(1.2);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+
+}
+
+.PageChanger:hover {
+    transform: scale(1.4);
+    padding-right:25px;
+    background-color: #00f0ff;
+    color: black;
+}
+.PageChanger:active {
+    transform: scale(1.1); /* slightly smaller when clicked */
+    transition: transform 120ms ease;
+}
+
+.PageChanger::after{
+    content: '→';
+    position: absolute;
+    right: 12px;
+    top: 22%;
+    transform:translateX(12px);
+    opacity: 0;
+    color: #00f0ff;
+    transform: scale(1.2);
+    font-size: 1.2rem;
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.2,0.8,0.2,1);
+    pointer-events: none;
+
+}
+
+.PageChanger:hover::after{
+    opacity: 1;
+    transform:translateX(7px);
+    color: black;
+}
+
+/* JS can add .hovering to trigger same visual state as :hover */
+.PageChanger.hovering::after{
+    opacity: 1;
+    transform:translateX(7px);
+    color: black;
+}
+
+
+
+.ImageDiv{
+    margin-top: 5%;
+    background-image: url('./Diplome.png');
+    width: clamp(320px, 50vw, 1000px); /* responsive width */
+    aspect-ratio: 10 / 7; /* preserve original proportions (1000x700) */
+    max-height: 80vh;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 0;
+    transform: translateX(-0%);
+    position: relative;
+}
+
+/* --- UNIVERSAL RESPONSIVE FIX --- */
+
+/* Base Font Scaling - Aggressively smaller on small screens */
+:root {
+    font-size: clamp(12px, 0.9vw, 18px); 
+}
+
+.Main{
+    min-height: 450vh; /* Further increased for smaller screens */
+}
+/* Adjusting the main gaps to prevent overlap */
+.InfoContainer {
+    top: 10vh;
+    width: 50%; /* Give text more horizontal room to stay "shorter" vertically */
+}
+
+.SkillsContainer {
+    top: 110vh; /* Increased gap from 110vh to 140vh to clear the Info text */
+}
+
+.ProjectsContainer {
+    top: 210vh; /* Increased gap */
+}
+
+.CertificatesContainer {
+    top: 290vh; /* Increased gap */
+    margin-bottom: 5%;
+}
+
+
+/* laptop & Laptop L Specific Adjustments (1024px to 1440px) */
+@media screen and (max-width: 1440px) {
+    .NameText {
+        font-size: 2.5rem; /* Reduced from 3.5rem */
+        margin-bottom: 15px;
+    }
+
+    .Info {
+        font-size: 1.2rem; /* Reduced from 1.8rem */
+        line-height: 1.5;
+        width: 85%;
+    }
+
+    .Section {
+        transform: scale(0.8); /* Shrink the floating label */
+        top: 80px;
+    }
+    
+    .ImageDiv {
+        width: clamp(280px, 60vw, 800px);
+        aspect-ratio: 16 / 10; /* slightly different ratio for mid screens if desired */
+        max-height: 65vh;
+        transform: translateX(-3%) scale(0.98);
+    }
+}
+
+/* 4K & Ultra-Wide Scaling (2560px+) */
+@media screen and (min-width: 2560px) {
+    :root {
+        font-size: 24px;
+    }
+    
+    .SkillsContainer { top: 120vh; }
+    .ProjectsContainer { top: 240vh; }
+    .CertificatesContainer { top: 360vh; }
+
+    .NameText { font-size: 5rem; }
+    .Info { font-size: 2.2rem; }
+}
+
+@media screen and (max-width: 426px) {
+
+    .Main {
+        min-height: 280vh; /* Further increased for very small screens */
+    }
+
+    /* 1. Centering the Section Label at the bottom */
+    .Section {
+        position: fixed;
+        top: auto;        /* Reset previous top */
+        bottom: 30px;     /* Distance from the bottom of the screen */
+        left: 15%;
+        transform: translateX(-50%); /* This handles perfect centering */
+        width: 70%;       /* Slightly wider for readability on small screens */
+        height: 45px;
+        font-size: 1.5rem;
+        border-radius: 25px;
+        z-index: 1000;    /* Ensure it stays above images/text */
+        box-shadow: 0 5px 15px rgba(0, 240, 255, 0.4);
+    }
+
+    .glow-line{
+        color: transparent;
+        background: transparent;
+        box-shadow: none;
+        animation: none;
+    }
+
+   .glow-line::after{
+        display: none;
+    }
+
+    /* 2. Adjusting Font Sizes for Phone Screens */
+    .NameText {
+        font-size: 1.8rem; /* Scaled down from 3.5rem */
+        margin-bottom: 10px;
+    }
+
+    .Info {
+        font-size: 1rem;   /* Comfortable reading size for mobile */
+        line-height: 1.4;
+    }
+
+    /* 3. Handling Container Spacing */
+    .InfoContainer, 
+    .SkillsContainer, 
+    .ProjectsContainer, 
+    .CertificatesContainer {
+        width: 95%;
+        left: 12%;
+        padding-bottom: 100px; /* Extra padding so content isn't hidden behind the label */
+    }
+    .Info{ font-size: 1.1rem;
+    }
+
+    /* Adjusting 'top' values for shorter, narrower scrolling */
+    .SkillsContainer { top: 90vh;
+    height: 10%; }
+    .ProjectsContainer { top: 170vh; }
+    .CertificatesContainer { top: 250vh; }
+
+    /* 4. Scaling the Image */
+    .ImageDiv {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 10 / 7;
+        margin-top: 10px;
+    }
+
+    .PageChanger{
+        top: 320vh;
+        left: 50%;
+        transform: translateX(-50%) scale(1.0);
+    }
+}
