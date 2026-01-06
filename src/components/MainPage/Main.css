@@ -281,6 +281,12 @@
     margin-bottom: 5%;
 }
 
+.Beammms{
+    width: 1080px;
+    height: 100vh;
+    position: fixed;
+}
+
 
 /* laptop & Laptop L Specific Adjustments (1024px to 1440px) */
 @media screen and (max-width: 1440px) {
@@ -322,10 +328,16 @@
     .Info { font-size: 2.2rem; }
 }
 
-@media screen and (max-width: 426px) {
+@media screen and (max-width: 440px) {
 
     .Main {
         min-height: 280vh; /* Further increased for very small screens */
+    }
+
+    .Beammms{
+        width: 440px;
+        height: 100vh;
+        position: fixed;
     }
 
     /* 1. Centering the Section Label at the bottom */
@@ -337,7 +349,7 @@
         transform: translateX(-50%); /* This handles perfect centering */
         width: 70%;       /* Slightly wider for readability on small screens */
         height: 45px;
-        font-size: 1.5rem;
+        font-size: 1.7rem;
         border-radius: 25px;
         z-index: 1000;    /* Ensure it stays above images/text */
         box-shadow: 0 5px 15px rgba(0, 240, 255, 0.4);
@@ -361,7 +373,7 @@
     }
 
     .Info {
-        font-size: 1rem;   /* Comfortable reading size for mobile */
+        font-size: 1.2rem;   /* Comfortable reading size for mobile */
         line-height: 1.4;
     }
 
@@ -370,17 +382,17 @@
     .SkillsContainer, 
     .ProjectsContainer, 
     .CertificatesContainer {
-        width: 95%;
-        left: 12%;
-        padding-bottom: 100px; /* Extra padding so content isn't hidden behind the label */
+        width: 100%;
+        left: 10%;
+        padding-bottom: 120px; /* Extra padding so content isn't hidden behind the label */
     }
-    .Info{ font-size: 1.1rem;
+    .Info{ font-size: 1.2rem;
     }
 
     /* Adjusting 'top' values for shorter, narrower scrolling */
-    .SkillsContainer { top: 90vh;
+    .SkillsContainer { top: 100vh;
     height: 10%; }
-    .ProjectsContainer { top: 170vh; }
+    .ProjectsContainer { top: 180vh; }
     .CertificatesContainer { top: 250vh; }
 
     /* 4. Scaling the Image */

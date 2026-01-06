@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./Main.css";
 import SectionLabel from "../SectionLabel";
 import { useNavigate } from "react-router-dom";
+import Beams from "./Beams";
 
 function Main() {
     const nameRef = useRef(null);
@@ -93,6 +94,9 @@ function Main() {
 
     return (
         <div className="Main">
+            <div className="Beammms">
+                <Beams />
+                </div>
             {/* INFO SECTION */}
             <section ref={sectionsRef.Info} data-section="Info" className="InfoContainer">
                 {/* We remove .reveal from the header because spans have their own animation */}
