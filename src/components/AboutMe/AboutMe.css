@@ -65,39 +65,19 @@
 
 .PageChanger2:hover {
     transform: scale(1.4);
-    padding-right:25px;
     background-color: #00f0ff;
     color: black;
 }
 .PageChanger2:active {
     transform: scale(1.1); /* slightly smaller when clicked */
-    transition: transform 120ms ease;
+    transition: transform   120ms ease;
 }
 
-.PageChanger2::after{
-    content: '→';
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%) translateX(12px);
-    opacity: 0;
-    color: #00f0ff;
-    font-size: 1.2rem;
-    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.2,0.8,0.2,1);
-    pointer-events: none;
-}
-
-.PageChanger2:hover::after{
-    opacity: 1;
-    transform: translateY(-50%) translateX(7px);
-    color: black;
-}
-
-/* JS can add .hovering to trigger same visual state as :hover */
-.PageChanger2.hovering::after{
-    opacity: 1;
-    transform:translateX(7px);
-    color: black;
+.BeamsAbout{
+    width: 1080px;
+    height: 110vh;
+    position: fixed;
+    top: -10vh;
 }
 
 
@@ -119,4 +99,13 @@
     .about-section li {
         font-size: 1rem;
     }
+
+    .BeamsAbout{
+    width: 110vw;
+    height: 110vh;
+    position: fixed;
+    top: -10vh;
+    right: 1vh;
+}
+
 }

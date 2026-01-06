@@ -1,6 +1,7 @@
 import "./AboutMe.css";
 import { useEffect,useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Beams from "../MainPage/Beams";
 
 function AboutMe() {
         const [animating, setAnimating] = useState(false);
@@ -28,6 +29,9 @@ function AboutMe() {
 
     return (
         <div className="AboutMe">
+            <div className="BeamsAbout">
+                <Beams />
+            </div>
             <section className="about-section reveal">
                 <h2 className="about-title">Personal info</h2>
             </section>

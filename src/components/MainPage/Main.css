@@ -184,7 +184,6 @@
     position: absolute;
     top: 420vh;
     left: 11%;
-    z-index: 100;
     display: flex; /* Lays the two parts side-by-side */
     border: 1px solid #00f0ff; /* The shared outer border */
     border-radius: 10px;
@@ -200,7 +199,6 @@
 
 .PageChanger:hover {
     transform: scale(1.4);
-    padding-right:25px;
     background-color: #00f0ff;
     color: black;
 }
@@ -209,33 +207,6 @@
     transition: transform 120ms ease;
 }
 
-.PageChanger::after{
-    content: '→';
-    position: absolute;
-    right: 12px;
-    top: 22%;
-    transform:translateX(12px);
-    opacity: 0;
-    color: #00f0ff;
-    transform: scale(1.2);
-    font-size: 1.2rem;
-    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.2,0.8,0.2,1);
-    pointer-events: none;
-
-}
-
-.PageChanger:hover::after{
-    opacity: 1;
-    transform:translateX(7px);
-    color: black;
-}
-
-/* JS can add .hovering to trigger same visual state as :hover */
-.PageChanger.hovering::after{
-    opacity: 1;
-    transform:translateX(7px);
-    color: black;
-}
 
 
 
@@ -405,7 +376,6 @@
 
     .PageChanger{
         top: 320vh;
-        left: 50%;
-        transform: translateX(-50%) scale(1.0);
+        justify-self: center;
     }
 }
