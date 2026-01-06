@@ -306,9 +306,10 @@
     }
 
     .Beammms{
-        width: 440px;
+        width: 100vw;
         height: 100vh;
         position: fixed;
+        color: rgba(0, 0, 0, 0.156);
     }
 
     /* 1. Centering the Section Label at the bottom */

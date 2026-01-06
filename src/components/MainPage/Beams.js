@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unknown-property */
-import { forwardRef, useImperativeHandle, useEffect, useRef, useMemo } from 'react';
+import { forwardRef, useImperativeHandle, useEffect, useRef, useMemo, useState } from 'react';
 
 import * as THREE from 'three';
 
@@ -151,6 +151,30 @@ const Beams = ({
   scale = 0.2,
   rotation = 0
 }) => {
+  // responsive breakpoint state
+  const [isSmall, setIsSmall] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width:440px)');
+    const onChange = e => setIsSmall(e.matches);
+    setIsSmall(mq.matches);
+    if (mq.addEventListener) mq.addEventListener('change', onChange);
+    else mq.addListener(onChange);
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener('change', onChange);
+      else mq.removeListener(onChange);
+    };
+  }, []);
+
+  // responsive params: use specific values when <=440px
+  const rBeamWidth = isSmall ? 10 : beamWidth;
+  const rBeamHeight = isSmall ? 15 : beamHeight;
+  const rBeamNumber = isSmall ? 1 : beamNumber;
+  const rLightColor = isSmall ? '#ffffff' : lightColor;
+  const rSpeed = isSmall ? 2 : speed;
+  const rNoiseIntensity = isSmall ? 11 : noiseIntensity;
+  const rScale = isSmall ? 0.2 : scale;
+  const rRotation = isSmall ? 0 : rotation;
+
   const meshRef = useRef(null);
   const beamMaterial = useMemo(
     () =>
@@ -200,20 +224,21 @@ const Beams = ({
           time: { shared: true, mixed: true, linked: true, value: 0 },
           roughness: 0.3,
           metalness: 0.3,
-          uSpeed: { shared: true, mixed: true, linked: true, value: speed },
+          uSpeed: { shared: true, mixed: true, linked: true, value: rSpeed },
           envMapIntensity: 10,
-          uNoiseIntensity: noiseIntensity,
-          uScale: scale
+          uNoiseIntensity: rNoiseIntensity,
+          uScale: rScale
         }
       }),
-    [speed, noiseIntensity, scale]
+    // update dependencies to responsive values
+    [rSpeed, rNoiseIntensity, rScale]
   );
 
   return (
     <CanvasWrapper>
-      <group rotation={[0, 0, degToRad(rotation)]}>
-        <PlaneNoise ref={meshRef} material={beamMaterial} count={beamNumber} width={beamWidth} height={beamHeight} />
-        <DirLight color={lightColor} position={[0, 3, 10]} />
+      <group rotation={[0, 0, degToRad(rRotation)]}>
+        <PlaneNoise ref={meshRef} material={beamMaterial} count={rBeamNumber} width={rBeamWidth} height={rBeamHeight} />
+        <DirLight color={rLightColor} position={[0, 3, 10]} />
       </group>
       <ambientLight intensity={1} />
       <color attach="background" args={['#000000']} />
