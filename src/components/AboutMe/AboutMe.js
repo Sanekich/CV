@@ -86,6 +86,7 @@ function AboutMe() {
                     <li>Strong communication and collaboration</li>
                     <li>Fast learner, proactive mindset</li>
                     <li>Punctual, reliable, and responsible</li>
+                    <li>Creative
                 </ul>
             </section>
 
