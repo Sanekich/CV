@@ -105,7 +105,7 @@ function Main() {
                 <p className="Info reveal" style={{ transitionDelay: "0.2s" }}>Gmail: alex.d.muratov@gmail.com</p>
                 
                 <div className="Info reveal" style={{ marginTop: "5%", transitionDelay: "0.3s" }}>
-                    <p className="Info reveal" style={{ marginTop: "5%" }}> Completed training at ITStep with strong frontend and backend fundamentals.<br /> Internship at Onix working with React UI, Node.js, and REST APIs.<br /> Motivated junior developer, fast learner, team-oriented.Completed training at ITStep, where I gained solid foundational knowledge in frontend and backend development.<br/> Completed an internship at Onix, working with React-based user interfaces, server-side logic in Node.js, and REST APIs.<br/> Motivated to grow as a professional, quick to learn new technologies, and comfortable working in a team environment. </p>
+                    <p className="Info reveal" style={{ marginTop: "5%" }}> Completed training at ITStep academy with strong frontend and backend fundamentals.<br /> Internship at Onix working with React UI, Node.js, and REST APIs.<br /> Motivated junior developer, fast learner, team-oriented.Completed training at ITStep, where I gained solid foundational knowledge in frontend and backend development.<br/> Completed an internship at Onix, working with React-based user interfaces, server-side logic in Node.js, and REST APIs.<br/> Motivated to grow as a professional, quick to learn new technologies, and comfortable working in a team environment. </p>
                 </div>
             </section>
 
@@ -147,7 +147,7 @@ function Main() {
                     <div className="ImageDiv" />
                 </div>
                 <a 
-                    href="/Muratov Diplome.pdf" 
+                    href="./Muratov Diplome.pdf" 
                     download="Aleksandr_Muratov_Diplome.pdf" 
                     className="link-button"
                     style={{ marginTop: "20px" }}

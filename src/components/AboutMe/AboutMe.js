@@ -64,9 +64,9 @@ function AboutMe() {
                 <h3 className="about-subtitle">Languages</h3>
                 <ul>
                     <li>Ukrainian – Native</li>
+                    <li>English – Fluent</li>
                     <li>Russian – Fluent</li>
                     <li>Italian – Excellent</li>
-                    <li>English – Fluent</li>
                 </ul>
             </section>
 
