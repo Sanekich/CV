@@ -3,6 +3,9 @@ import "./Main.css";
 import SectionLabel from "../SectionLabel";
 import { useNavigate } from "react-router-dom";
 import Beams from "./Beams";
+import diplome1 from "./Diplome.png";
+import diplome2 from "./Diplome2.png";
+
 
 function Main() {
     const nameRef = useRef(null);
@@ -28,9 +31,15 @@ function Main() {
         "Team collaboration & project experience"
     ];
 
+    const [photo, SetPhoto] = useState(true);
+    const [modalImage, setModalImage] = useState(null);
     const navigate = useNavigate();
     const [animating, setAnimating] = useState(false);
     const [navTriggered, setNavTriggered] = useState(false);
+    
+    const openModal = (image) => setModalImage(image);
+    const closeModal = () => setModalImage(null);
+
 
     // Detect active section for the floating label
    useEffect(() => {
@@ -92,11 +101,17 @@ function Main() {
         });
     }, []);
 
+
+
     return (
         <div className="Main">
+
             <div className="Beammms">
                 <Beams />
-                </div>
+            </div>
+
+            
+
             {/* INFO SECTION */}
             <section ref={sectionsRef.Info} data-section="Info" className="InfoContainer">
                 {/* We remove .reveal from the header because spans have their own animation */}
@@ -140,12 +155,36 @@ function Main() {
                 </div>
             </section>
 
+                    {modalImage && (
+                        <div className="image-backdrop" onClick={closeModal}>
+                            <div
+                            className="image-modal"
+                            style={{
+                                backgroundImage:
+                                modalImage === 'diplome1'
+                                    ? `url(${diplome1})`
+                                    : `url(${diplome2})`
+                            }}
+                            onClick={closeModal}
+                            />
+                        </div>
+                        )}
+
             {/* CERTIFICATES*/}
             <section ref={sectionsRef.Diplome} data-section="Diploma" className="CertificatesContainer">
                 <h2 className="NameText reveal">Diploma</h2>
+
                 <div className="Info reveal" style={{ marginBottom: "40px", transitionDelay: "0.1s" }}>
-                    <div className="ImageDiv" />
+                    <button className={`dot ${photo ? 'active' : ''}`} onClick={() => SetPhoto(true)}></button>
+                    <button className={`dot ${!photo ? 'active' : ''}`} onClick={() => SetPhoto(false)}></button>
+
+                    {photo
+                        ? <div className="ImageDiv" onClick={() => openModal('diplome1')} />
+                        : <div className="ImageDiv2" onClick={() => openModal('diplome2')} />
+                    }
+
                 </div>
+
                 <a 
                     href="./Muratov Diplome.pdf" 
                     download="Aleksandr_Muratov_Diplome.pdf" 
@@ -154,8 +193,6 @@ function Main() {
                 >
                 Download Diploma supplement
                 </a>
-            </section>
-
                 <div
                     className={`PageChanger ${animating ? 'hovering' : ''}`}
                     onClick={() => {
@@ -170,6 +207,9 @@ function Main() {
                 >
                     About me
                 </div>
+            </section>
+
+                
 
             <div className="glow-line">
                 <SectionLabel key={activeSection} text={activeSection} />
