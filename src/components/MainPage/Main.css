@@ -210,16 +210,22 @@
 
 
 .dot{
-    height: 13px;
-    width: 12px;
+    height: 17px;
+    width: 17px;
     background-color: #ffffff;
     border-radius: 50%;
-    display: inline-block;
+    display: inline-flex;
     margin-right: 8px;
     animation: blink 1.5s infinite;
     cursor: pointer;
+    border: transparent 2px solid;
     transition: all 0.3s ease;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
 }
+
 
 .dot.active {
     background-color: #00f0ff;
@@ -282,7 +288,7 @@
 
 /* set each image separately */
 .ImageDiv  { background-image: url('./Diplome.png'); }
-.ImageDiv2 { background-image: url('./Diplome2.png'); background-position: left;}
+.ImageDiv2 { background-image: url('./Diplome2.jpg'); background-position: left;}
 
 .image-modal {
     position: fixed;

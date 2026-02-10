@@ -4,7 +4,7 @@ import SectionLabel from "../SectionLabel";
 import { useNavigate } from "react-router-dom";
 import Beams from "./Beams";
 import diplome1 from "./Diplome.png";
-import diplome2 from "./Diplome2.png";
+import diplome2 from "./Diplome2.jpg";
 
 
 function Main() {
@@ -40,6 +40,8 @@ function Main() {
     const openModal = (image) => setModalImage(image);
     const closeModal = () => setModalImage(null);
 
+    const right = ">";
+    const left = "<";
 
     // Detect active section for the floating label
    useEffect(() => {
@@ -175,8 +177,8 @@ function Main() {
                 <h2 className="NameText reveal">Diploma</h2>
 
                 <div className="Info reveal" style={{ marginBottom: "40px", transitionDelay: "0.1s" }}>
-                    <button className={`dot ${photo ? 'active' : ''}`} onClick={() => SetPhoto(true)}></button>
-                    <button className={`dot ${!photo ? 'active' : ''}`} onClick={() => SetPhoto(false)}></button>
+                    <button className={`dot ${photo ? 'active' : ''}`} onClick={() => SetPhoto(true)}>1</button>
+                    <button className={`dot ${!photo ? 'active' : ''}`} onClick={() => SetPhoto(false)}>2</button>
 
                     {photo
                         ? <div className="ImageDiv" onClick={() => openModal('diplome1')} />
