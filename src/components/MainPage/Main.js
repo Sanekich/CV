@@ -34,7 +34,7 @@ function Main() {
     const [photo, SetPhoto] = useState(true);
     const [modalImage, setModalImage] = useState(null);
     const navigate = useNavigate();
-    const [animating, setAnimating] = useState(false);
+
     const [navTriggered, setNavTriggered] = useState(false);
     
     const openModal = (image) => setModalImage(image);
@@ -195,20 +195,6 @@ function Main() {
                 >
                 Download Diploma supplement
                 </a>
-                <div
-                    className={`PageChanger ${animating ? 'hovering' : ''}`}
-                    onClick={() => {
-                        if (navTriggered) return;
-                        setAnimating(true);
-                        // navigate after the CSS transition completes (match ~350ms + small buffer)
-                        setTimeout(() => {
-                            setNavTriggered(true);
-                            navigate('/about');
-                        }, 420);
-                    }}
-                >
-                    About me
-                </div>
             </section>
 
                 

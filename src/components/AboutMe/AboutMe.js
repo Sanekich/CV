@@ -58,6 +58,8 @@ function AboutMe() {
                 <h3 className="about-subtitle">Education</h3>
                 <p><strong>ITIS Majorana – Giorgi</strong></p>
                 <p>2022 – Present</p>
+                <p><strong>TNTU – Information technology</strong></p>
+                <p>2024 – Present</p>
             </section>
 
             <section className="about-section reveal">
@@ -94,20 +96,7 @@ function AboutMe() {
                 <h3 className="about-subtitle">Interests</h3>
                 <p>Technology, foreign languages, sports, music, travel</p>
             </section>
-                <div
-                    className={`PageChanger2 ${animating ? 'hovering' : ''}`}
-                    onClick={() => {
-                        if (navTriggered) return;
-                        setAnimating(true);
-                        // navigate after the CSS transition completes (match ~350ms + small buffer)
-                        setTimeout(() => {
-                            setNavTriggered(true);
-                            navigate('/');
-                        }, 420);
-                    }}
-                >
-                    Main
-                </div>
+                
         </div>
     );
 }

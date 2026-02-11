@@ -44,34 +44,6 @@
     transform: translateY(0);
 }
 
-/* Page Changer Container */
-.PageChanger2 {
-    /* In-flow placement so it stays right after the Interests section
-       (remove brittle absolute positioning). */
-    position: relative;
-    display: inline-flex; /* keeps internal layout similar to previous flex */
-    z-index: 100;
-    border: 1px solid #00f0ff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
-    transition: all 0.3s ease-in-out;
-    transform: scale(1.2);
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-    margin-top: 24px; /* space below the previous section */
-}
-
-.PageChanger2:hover {
-    transform: scale(1.4);
-    background-color: #00f0ff;
-    color: black;
-}
-.PageChanger2:active {
-    transform: scale(1.1); /* slightly smaller when clicked */
-    transition: transform   120ms ease;
-}
 
 .BeamsAbout{
     width: 1080px;

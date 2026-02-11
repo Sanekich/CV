@@ -179,34 +179,7 @@
     display: none;
 }
 
-/* Page Changer Container */
-.PageChanger {
-    position: relative;
-    top: 7vh;
-    left: 1%;
-    display: flex; /* Lays the two parts side-by-side */
-    border: 1px solid #00f0ff; /* The shared outer border */
-    border-radius: 10px;
-    overflow: hidden; /* Ensures the sharp inner colors don't bleed over the rounded corners */
-    box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
-    transition: all 0.3s ease-in-out;
-    transform: scale(1.2);
-    color: white;
-    padding: 10px;
-    width: fit-content;
-    cursor: pointer;
-    justify-self: left;
-}
 
-.PageChanger:hover {
-    transform: scale(1.4);
-    background-color: #00f0ff;
-    color: black;
-}
-.PageChanger:active {
-    transform: scale(1.1); /* slightly smaller when clicked */
-    transition: transform 120ms ease;
-}
 
 
 .dot{
@@ -378,9 +351,14 @@
 
     .NameText { font-size: 5rem; }
     .Info { font-size: 2.2rem; }
-    .PageChanger{
-        margin-bottom: 5vh;
+}
+
+@media screen and (max-width: 1000px) {
+    .Section {
+        width: 250px;
+        height: 70px;
     }
+    
 }
 
 @media screen and (max-width: 440px) {
@@ -466,11 +444,4 @@
         margin-top: 10px;
     }
 
-    .PageChanger{
-        top: 5vh;
-        position: relative;
-        justify-self: left;
-        left: 0px;
-        margin-bottom: 50px;
-    }
 }
