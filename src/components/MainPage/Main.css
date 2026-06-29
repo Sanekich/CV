@@ -1,13 +1,15 @@
-/* Main Layout */
+/* ═══════════════════════════════════════════════════════════
+   Main Layout
+═══════════════════════════════════════════════════════════ */
 .Main {
     background-color: black;
-    min-height: 420vh; /* Increased to allow enough space for scroll reveals */
+    min-height: 420vh;
     position: relative;
     overflow-x: hidden;
     scroll-behavior: smooth;
 }
 
-/* Sections Positioning */
+/* ─── Section Positioning ─────────────────────────────────── */
 .InfoContainer {
     position: absolute;
     left: 10%;
@@ -15,29 +17,21 @@
     width: 50%;
     padding-bottom: 20px;
 }
-/* Update these in your Main.css */
 
-.SkillsContainer, .ProjectsContainer, .CertificatesContainer {
+.SkillsContainer,
+.ProjectsContainer,
+.CertificatesContainer {
     position: absolute;
     left: 10%;
     width: 60%;
-    /* Add this line to ensure the observer can "see" the section longer */
-    min-height: 80vh; 
+    min-height: 80vh;
 }
 
-.SkillsContainer {
-    top: 110vh;
-}
+.SkillsContainer      { top: 110vh; }
+.ProjectsContainer    { top: 210vh; }
+.CertificatesContainer { top: 290vh; }
 
-.ProjectsContainer {
-    top: 210vh; /* Slightly adjusted for better flow */
-}
-
-.CertificatesContainer {
-    top: 290vh;
-}
-
-/* Base Reveal Logic (Fixes the blank screen issue) */
+/* ─── Reveal Animation ────────────────────────────────────── */
 .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -51,7 +45,7 @@
     pointer-events: auto;
 }
 
-/* Typography */
+/* ─── Typography ─────────────────────────────────────────── */
 .NameText {
     font-size: 3.5rem;
     color: white;
@@ -59,7 +53,7 @@
     margin-bottom: 20px;
 }
 
-/* Individual Letters Animation */
+/* Individual letter animation */
 .NameText span {
     display: inline-block;
     opacity: 0;
@@ -86,7 +80,7 @@
     line-height: 1.4;
 }
 
-/* Floating Section Label Styles */
+/* ─── Section Label ──────────────────────────────────────── */
 .Section {
     color: cyan;
     font-size: 2rem;
@@ -108,19 +102,11 @@
 }
 
 @keyframes sectionSlide {
-    0% {
-        opacity: 0;
-        transform: scale(0.8) translateY(50px);
-        filter: blur(10px);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1.3) translateY(0);
-        filter: blur(0px);
-    }
+    0%   { opacity: 0; transform: scale(0.8) translateY(50px); filter: blur(10px); }
+    100% { opacity: 1; transform: scale(1.3) translateY(0);    filter: blur(0px);  }
 }
 
-/* Glow Line and Effects */
+/* ─── Glow Line ──────────────────────────────────────────── */
 .glow-line {
     width: 20%;
     height: 4px;
@@ -149,10 +135,10 @@
 
 @keyframes pulse {
     from { box-shadow: 0 0 30px #00f0ff, 0 0 80px #00ff88; }
-    to { box-shadow: 0 0 20px #00f0ff, 0 0 60px #00ff88; }
+    to   { box-shadow: 0 0 20px #00f0ff, 0 0 60px #00ff88; }
 }
 
-/* Link Buttons */
+/* ─── Link Buttons ───────────────────────────────────────── */
 .link-button {
     background-color: transparent;
     border: 1px solid rgba(0, 240, 255, 0.5);
@@ -174,15 +160,10 @@
     transform: scale(1.1);
 }
 
-/* Utility */
-::-webkit-scrollbar {
-    display: none;
-}
+/* ─── Utility ────────────────────────────────────────────── */
+::-webkit-scrollbar { display: none; }
 
-
-
-
-.dot{
+.dot {
     height: 17px;
     width: 17px;
     background-color: #ffffff;
@@ -196,252 +177,297 @@
     justify-content: center;
     align-items: center;
     position: relative;
-
 }
-
 
 .dot.active {
     background-color: #00f0ff;
     transform: scale(1.3);
 }
 
-.ImageDiv{
+/* ─── Diploma Images ─────────────────────────────────────── */
+.ImageDiv,
+.ImageDiv2 {
     margin-top: 5%;
-    background-image: url('./Diplome.png');
-    width: clamp(320px, 50vw, 1000px); /* responsive width */
-    aspect-ratio: 10 / 7; /* preserve original proportions (1000x700) */
+    width: clamp(320px, 50vw, 1000px);
     max-height: 80vh;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
-    margin-bottom: 0;
-    transform: translateX(-0%);
+    background-repeat: no-repeat;
     position: relative;
+    aspect-ratio: 10 / 7;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
 }
 
-/* CSS */
-.ImageDiv, .ImageDiv2{
-  margin-top: 5%;
-  width: clamp(320px, 50vw, 1000px);
-  max-height: 80vh;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-  aspect-ratio: 10 / 7;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
-}
+.ImageDiv  { background-image: url('./Diplome.png'); }
+.ImageDiv2 { background-image: url('./Diplome2.jpg'); background-position: left; }
 
-/* Expanded fullscreen state */
-.ImageDiv.expanded, .ImageDiv2.expanded {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 9999;
-  aspect-ratio: auto;
-  margin: 0;
-  border-radius: 0;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+/* Fullscreen expanded state */
+.ImageDiv.expanded,
+.ImageDiv2.expanded {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    aspect-ratio: auto;
+    margin: 0;
+    border-radius: 0;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .image-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.9);
-  z-index: 9998;
-  cursor: pointer;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 9998;
+    cursor: pointer;
 }
-
-/* set each image separately */
-.ImageDiv  { background-image: url('./Diplome.png'); }
-.ImageDiv2 { background-image: url('./Diplome2.jpg'); background-position: left;}
 
 .image-modal {
     position: fixed;
     top: 5vh;
-  width: 90vw;
-  height: 90vh;
-  background-size: contain;   /* ✅ CRITICAL */
-  background-position: center;
-  background-repeat: no-repeat;
-  justify-self: center;
+    width: 90vw;
+    height: 90vh;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    justify-self: center;
 }
 
-
-
-/* --- UNIVERSAL RESPONSIVE FIX --- */
-
-/* Base Font Scaling - Aggressively smaller on small screens */
-:root {
-    font-size: clamp(12px, 0.9vw, 18px); 
-}
-
-.Main{
-    min-height: 450vh; /* Further increased for smaller screens */
-}
-/* Adjusting the main gaps to prevent overlap */
-.InfoContainer {
-    top: 10vh;
-    width: 50%; /* Give text more horizontal room to stay "shorter" vertically */
-}
-
-.SkillsContainer {
-    top: 110vh; /* Increased gap from 110vh to 140vh to clear the Info text */
-}
-
-.ProjectsContainer {
-    top: 210vh; /* Increased gap */
-}
-
-.CertificatesContainer {
-    top: 270vh; /* Increased gap */
-    margin-bottom: 5%;
-}
-
-.Beammms{
+/* ─── Beams wrapper ──────────────────────────────────────── */
+.Beammms {
     width: 1080px;
     height: 100vh;
     position: fixed;
 }
 
+/* ═══════════════════════════════════════════════════════════
+   Root font scaling
+═══════════════════════════════════════════════════════════ */
+:root { font-size: clamp(12px, 0.9vw, 18px); }
 
-/* laptop & Laptop L Specific Adjustments (1024px to 1440px) */
-@media screen and (max-width: 1440px) {
+/* ═══════════════════════════════════════════════════════════
+   4K / Ultra-wide  (≥ 2560px)
+═══════════════════════════════════════════════════════════ */
+@media screen and (min-width: 2560px) {
+    :root { font-size: 24px; }
+
+    .Main              { min-height: 450vh; }
+    .SkillsContainer   { top: 120vh; }
+    .ProjectsContainer { top: 240vh; }
+    .CertificatesContainer { top: 360vh; margin-bottom: 10vh; }
+
+    .NameText { font-size: 5rem; }
+    .Info     { font-size: 2.2rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Laptop L  (1025px – 1440px)
+═══════════════════════════════════════════════════════════ */
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
     .NameText {
-        font-size: 2.5rem; /* Reduced from 3.5rem */
+        font-size: 2.5rem;
         margin-bottom: 15px;
     }
 
     .Info {
-        font-size: 1.2rem; /* Reduced from 1.8rem */
+        font-size: 1.2rem;
         line-height: 1.5;
         width: 85%;
     }
 
     .Section {
-        transform: scale(0.8); /* Shrink the floating label */
+        transform: scale(0.8);
         top: 80px;
     }
-    
+
     .ImageDiv {
         width: clamp(280px, 60vw, 800px);
-        aspect-ratio: 16 / 10; /* slightly different ratio for mid screens if desired */
+        aspect-ratio: 16 / 10;
         max-height: 65vh;
         transform: translateX(-3%) scale(0.98);
     }
 }
 
-/* 4K & Ultra-Wide Scaling (2560px+) */
-@media screen and (min-width: 2560px) {
-    :root {
-        font-size: 24px;
+/* ═══════════════════════════════════════════════════════════
+   iPad / Tablet  (768px – 1024px)
+═══════════════════════════════════════════════════════════ */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .Main { min-height: 500vh; }
+
+    :root { font-size: 14px; }
+
+    .InfoContainer {
+        left: 6%;
+        top: 12vh;
+        width: 80%;           /* wider — tablets are portrait-friendly */
     }
-    
-    .SkillsContainer { top: 120vh; }
-    .ProjectsContainer { top: 240vh; }
-    .CertificatesContainer { top: 360vh;
-    margin-bottom: 10vh; }
 
-    .NameText { font-size: 5rem; }
-    .Info { font-size: 2.2rem; }
-}
+    .SkillsContainer,
+    .ProjectsContainer,
+    .CertificatesContainer {
+        left: 6%;
+        width: 80%;
+    }
 
-@media screen and (max-width: 1000px) {
+    .SkillsContainer      { top: 130vh; }
+    .ProjectsContainer    { top: 250vh; }
+    .CertificatesContainer { top: 360vh; }
+
+    .NameText {
+        font-size: 2.8rem;
+        margin-bottom: 14px;
+    }
+
+    .Info { font-size: 1.35rem; line-height: 1.55; }
+
+    /* Section label — pull it off the glow-line to a bottom pill on tablet */
     .Section {
-        width: 250px;
-        height: 70px;
+        position: fixed;
+        top: auto;
+        bottom: 28px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 55%;
+        height: 52px;
+        font-size: 1.6rem;
+        border-radius: 26px;
+        z-index: 1000;
+        box-shadow: 0 5px 15px rgba(0, 240, 255, 0.4);
     }
-    
+
+    /* Hide the desktop glow-line decoration on tablet */
+    .glow-line {
+        background: transparent;
+        box-shadow: none;
+        animation: none;
+        width: 0;
+        left: -9999px;        /* move off-screen; Section is now the pill */
+    }
+    .glow-line::after { display: none; }
+
+    .Beammms {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+    }
+
+    .ImageDiv,
+    .ImageDiv2 {
+        width: clamp(280px, 72vw, 700px);
+        max-height: 60vh;
+    }
 }
 
-@media screen and (max-width: 440px) {
+/* ═══════════════════════════════════════════════════════════
+   Small tablet / large phone  (441px – 767px)
+═══════════════════════════════════════════════════════════ */
+@media screen and (min-width: 441px) and (max-width: 767px) {
+    .Main { min-height: 380vh; }
 
-    .Main {
-        min-height: 280vh; /* Further increased for very small screens */
+    .InfoContainer,
+    .SkillsContainer,
+    .ProjectsContainer,
+    .CertificatesContainer {
+        left: 6%;
+        width: 88%;
     }
 
-    .Beammms{
+    .SkillsContainer      { top: 115vh; }
+    .ProjectsContainer    { top: 210vh; }
+    .CertificatesContainer { top: 295vh; }
+
+    .NameText { font-size: 2.2rem; }
+    .Info     { font-size: 1.15rem; }
+
+    .Section {
+        position: fixed;
+        bottom: 28px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60%;
+        height: 48px;
+        font-size: 1.5rem;
+        border-radius: 24px;
+        z-index: 1000;
+    }
+
+    .glow-line { display: none; }
+
+    .ImageDiv,
+    .ImageDiv2 {
+        width: 90%;
+        max-height: 55vh;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Phone  (≤ 440px)
+═══════════════════════════════════════════════════════════ */
+@media screen and (max-width: 440px) {
+    .Main { min-height: 280vh; }
+
+    .Beammms {
         width: 100vw;
         height: 100vh;
         position: fixed;
         color: rgba(0, 0, 0, 0.156);
     }
 
-    /* 1. Centering the Section Label at the bottom */
     .Section {
         position: fixed;
-        top: auto;        /* Reset previous top */
-        bottom: 30px;     /* Distance from the bottom of the screen */
+        top: auto;
+        bottom: 30px;
         left: 15%;
-        transform: translateX(-50%); /* This handles perfect centering */
-        width: 70%;       /* Slightly wider for readability on small screens */
+        transform: translateX(-50%);
+        width: 70%;
         height: 45px;
         font-size: 1.7rem;
         border-radius: 25px;
-        z-index: 1000;    /* Ensure it stays above images/text */
+        z-index: 1000;
         box-shadow: 0 5px 15px rgba(0, 240, 255, 0.4);
     }
 
-    .glow-line{
+    .glow-line {
         color: transparent;
         background: transparent;
         box-shadow: none;
         animation: none;
     }
+    .glow-line::after { display: none; }
 
-   .glow-line::after{
-        display: none;
-    }
+    .NameText { font-size: 1.8rem; margin-bottom: 10px; }
+    .Info     { font-size: 1.2rem; line-height: 1.4; }
 
-    /* 2. Adjusting Font Sizes for Phone Screens */
-    .NameText {
-        font-size: 1.8rem; /* Scaled down from 3.5rem */
-        margin-bottom: 10px;
-    }
-
-    .Info {
-        font-size: 1.2rem;   /* Comfortable reading size for mobile */
-        line-height: 1.4;
-    }
-
-    /* 3. Handling Container Spacing */
-    .InfoContainer, 
-    .SkillsContainer, 
-    .ProjectsContainer, 
+    .InfoContainer,
+    .SkillsContainer,
+    .ProjectsContainer,
     .CertificatesContainer {
         width: 100%;
         left: 10%;
-        padding-bottom: 120px; /* Extra padding so content isn't hidden behind the label */
-    }
-    .Info{ font-size: 1.2rem;
+        padding-bottom: 120px;
     }
 
-    /* Adjusting 'top' values for shorter, narrower scrolling */
-    .SkillsContainer { top: 100vh;
-    height: 10%; }
-    .ProjectsContainer { top: 180vh; }
+    .SkillsContainer      { top: 100vh; }
+    .ProjectsContainer    { top: 180vh; }
     .CertificatesContainer { top: 250vh; }
 
-    /* 4. Scaling the Image */
-    .ImageDiv {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 10 / 7;
-        margin-top: 10px;
-    }
-
+    /* ✅ Both images constrained to screen width on mobile */
+    .ImageDiv,
     .ImageDiv2 {
-        width: 200%;
+        width: 85%;
         height: auto;
         aspect-ratio: 10 / 7;
         margin-top: 10px;
+        background-position: center;
     }
 
+    .Section { width: 250px; height: 70px; }
 }

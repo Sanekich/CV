@@ -1,44 +1,65 @@
-import { useEffect, useRef, useState } from "react";
-import SectionLabel from "../SectionLabel";
-import { useNavigate } from "react-router-dom";
-import Beams from "./Beams";
-import diplome1 from "./Diplome.png";
-import diplome2 from "./Diplome2.jpg";
+import { useState, createContext, useContext } from "react";
 import Main from "./Main";
 import AboutMe from "../AboutMe/AboutMe";
 import "./Home.css";
 
+// ─── Language Context ──────────────────────────────────────────────────────────
+export const LangContext = createContext({ lang: "en", t: (en) => en });
+
+export function useLang() {
+    return useContext(LangContext);
+}
+
+// ─── Translations ──────────────────────────────────────────────────────────────
+const translations = {
+    en: {
+        nav_main: "Main",
+        nav_about: "About Me",
+        lang_toggle: "🇮🇹 Italiano",
+    },
+    it: {
+        nav_main: "Principale",
+        nav_about: "Chi Sono",
+        lang_toggle: "🇬🇧 English",
+    },
+};
+
 function Home() {
     const [page, setPage] = useState("main");
+    const [lang, setLang] = useState("en");
 
-    const ChangePage = (newPage) => {
-        setPage(newPage);
-    }
+    const t = (key) => translations[lang][key] ?? key;
+
     return (
+        <LangContext.Provider value={{ lang, t }}>
+            <div className="home-container">
+                <div className="PageChanger">
+                    <button
+                        className={page === "main" ? "active" : ""}
+                        onClick={() => setPage("main")}
+                    >
+                        {t("nav_main")}
+                    </button>
 
+                    <button
+                        className={page === "about" ? "active" : ""}
+                        onClick={() => setPage("about")}
+                    >
+                        {t("nav_about")}
+                    </button>
 
-        <div className="home-container">
-           <div className="PageChanger">
-                <button 
-                    className={page === "main" ? "active" : ""}
-                    onClick={() => ChangePage("main")}
-                >
-                    Main
-                </button>
+                    <button
+                        className="lang-toggle"
+                        onClick={() => setLang((l) => (l === "en" ? "it" : "en"))}
+                        aria-label="Toggle language"
+                    >
+                        {t("lang_toggle")}
+                    </button>
+                </div>
 
-                <button 
-                    className={page === "about" ? "active" : ""}
-                    onClick={() => ChangePage("about")}
-                >
-                    About Me
-                </button>
+                {page === "main" ? <Main /> : <AboutMe />}
             </div>
-
-            {page === "main" ? <Main /> : <AboutMe />}
-
-
-
-        </div>
+        </LangContext.Provider>
     );
 }
 

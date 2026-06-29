@@ -5,6 +5,7 @@
 
     display: flex;
     gap: 20px;
+    align-items: center;
 
     background: rgba(10, 10, 10, 0.6);
     backdrop-filter: blur(12px);
@@ -41,4 +42,62 @@
     color: #00f0ff;
     background: rgba(0, 240, 255, 0.1);
     box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+}
+
+/* Language toggle — visually separated with a subtle divider */
+.PageChanger .lang-toggle {
+    border-left: 1px solid rgba(0, 240, 255, 0.25);
+    padding-left: 16px;
+    margin-left: 4px;
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.PageChanger .lang-toggle:hover {
+    color: #00f0ff;
+    text-shadow: 0 0 8px #00f0ff;
+}
+
+/* ── iPad (768px – 1024px) ───────────────────────────────────────────────── */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .PageChanger {
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        gap: 14px;
+        padding: 8px 18px;
+    }
+
+    .PageChanger button {
+        font-size: 0.95rem;
+        padding: 5px 10px;
+    }
+
+    .PageChanger .lang-toggle {
+        font-size: 0.85rem;
+        padding-left: 14px;
+    }
+}
+
+/* ── Phone (≤ 440px) ─────────────────────────────────────────────────────── */
+@media screen and (max-width: 440px) {
+    .PageChanger {
+        top: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        gap: 10px;
+        padding: 7px 14px;
+        border-radius: 25px;
+    }
+
+    .PageChanger button {
+        font-size: 0.85rem;
+        padding: 5px 8px;
+    }
+
+    .PageChanger .lang-toggle {
+        font-size: 0.78rem;
+        padding-left: 10px;
+    }
 }
