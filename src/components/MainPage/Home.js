@@ -15,18 +15,18 @@ const translations = {
     en: {
         nav_main: "Main",
         nav_about: "About Me",
-        lang_toggle: "🇮🇹 Italiano",
+        lang_toggle: "English",
     },
     it: {
         nav_main: "Principale",
         nav_about: "Chi Sono",
-        lang_toggle: "🇬🇧 English",
+        lang_toggle: "Italiano",
     },
 };
 
 function Home() {
     const [page, setPage] = useState("main");
-    const [lang, setLang] = useState("en");
+    const [lang, setLang] = useState("it");
 
     const t = (key) => translations[lang][key] ?? key;
 
@@ -50,7 +50,7 @@ function Home() {
 
                     <button
                         className="lang-toggle"
-                        onClick={() => setLang((l) => (l === "en" ? "it" : "en"))}
+                        onClick={() => setLang((l) => (l === "it" ? "en" : "it"))}
                         aria-label="Toggle language"
                     >
                         {t("lang_toggle")}

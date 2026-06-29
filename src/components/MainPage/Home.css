@@ -46,17 +46,17 @@
 
 /* Language toggle — visually separated with a subtle divider */
 .PageChanger .lang-toggle {
-    border-left: 1px solid rgba(0, 240, 255, 0.25);
     padding-left: 16px;
     margin-left: 4px;
     font-size: 0.9rem;
     letter-spacing: 0.03em;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(0, 0, 0, 0.75);
+    background-color: #00f0ff;
 }
 
 .PageChanger .lang-toggle:hover {
-    color: #00f0ff;
-    text-shadow: 0 0 8px #00f0ff;
+    color: black;
+    text-shadow: 0 0 8px #26eefc;
 }
 
 /* ── iPad (768px – 1024px) ───────────────────────────────────────────────── */
