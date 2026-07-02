@@ -193,7 +193,7 @@ function Main() {
                     <button
                         className="link-button"
                         onClick={() =>
-                            window.open("https://github.com/Sanekich/reactstore", "_blank")
+                            window.open("https://www.metodo-ballance.it/", "_blank")
                         }
                     >
                         {s.view_project}
